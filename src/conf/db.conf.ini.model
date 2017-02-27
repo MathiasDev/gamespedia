@@ -1,0 +1,4 @@
+host= localhost
+database= gamespedia
+username= user
+password= psswd
