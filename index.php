@@ -11,5 +11,9 @@ $app->get('/jeux/mario', function(){
     $controleur->listeMario();
 });
 
+$app->get('/company/japon', function(){
+    $controleur = new \app\controller\CompanyController();
+    $controleur->listeJapon();
+});
 
 $app->run();
