@@ -10,4 +10,8 @@ class Game extends Model
 
     protected $primaryKey = 'id';
     public $timestamps = false;
+	
+	public function Company(){
+		return $this->belongsTo('\app\model\Company','id');
+	}
 }

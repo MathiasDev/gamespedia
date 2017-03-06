@@ -10,4 +10,8 @@ class Company extends Model
 
     protected $primaryKey = 'id';
     public $timestamps = false;
+	
+	public function Game(){
+		return $this->hasMany('\app\model\Game','id');
+	}
 }

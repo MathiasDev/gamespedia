@@ -16,4 +16,14 @@ $app->get('/company/japon', function(){
     $controleur->listeJapon();
 });
 
+$app->get('/jeux/listJeux', function(){
+    $controleur = new \app\controller\GameController();
+    $controleur->listJeux();
+});
+
+$app->get('/jeux/listJeuxByNomDeck', function(){
+    $controleur = new \app\controller\GameController();
+    $controleur->listJeuxByNomDeck();
+});
+
 $app->run();
