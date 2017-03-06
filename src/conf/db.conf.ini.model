@@ -1,0 +1,7 @@
+driver= mysql
+charset= utf8
+host= localhost
+database= gamespedia
+username= user
+password= psswd
+collation=utf8_unicode_ci
