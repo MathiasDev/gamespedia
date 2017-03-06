@@ -1,7 +1,9 @@
 <?php
 
 namespace app\controller;
+
 use app\model\Game;
+use app\view\GameView;
 
 class GameController
 {
@@ -10,32 +12,25 @@ class GameController
     }
 
     public function listeMario(){
-        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu){
-            echo $jeu->id . ' ' . $jeu->name . '<br>';
-        }
+		$list = Game::where('name', 'like', '%Mario%')->get();
+		$vue = new GameView($list);
+		$vue->mario();
     }
 	
 	public function listJeux(){
-		foreach(Game::whereBetween('id', [ 21173, 21615])->get()as $jeu){
-			echo $jeu->id . ' ' . $jeu->name . '<br>';
-		
+		$list = Game::take(442)->skip(21173)->get();
+		$vue = new GameView($list);
+		$vue->listJeux();
 	}
 	
-	public function listJeuxByNomDeck(){
-		$nbjeux = 0;
-		$nbpages = 0;
-		foreach(Game::get() as $jeu){
-				//mettre dans la page correspondante afficher méthode jeuxpages(numpage)
-				if(nbjeux <= 500){
-					echo $jeu->nom . "  " . $jeu->deck;
-					nbjeux++;
-				}else{
-					echo $jeu->nom . "  " . $jeu->deck;
-					nbjeux = 0;
-					nbpages ++;
-				}
-				
-			}
+	public function listJeuxByNomDeck($pages){
+		$list =null;
+		if($pages != 1){
+			$list = Game::take(500)->skip(500*$pages)->get();
+		}else{
+			$list = Game::take(500)->get();
 		}
+		$vue = new GameView($list);
+		$vue->jeuxByPage();
 	}
 }

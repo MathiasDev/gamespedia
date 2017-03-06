@@ -21,9 +21,9 @@ $app->get('/jeux/listJeux', function(){
     $controleur->listJeux();
 });
 
-$app->get('/jeux/listJeuxByNomDeck', function(){
-    $controleur = new \app\controller\GameController();
-    $controleur->listJeuxByNomDeck();
+$app->get('/jeux/listByPage/:pages', function($pages){
+	$controleur = new \app\controller\GameController();
+	$controleur->listJeuxByNomDeck($pages);
 });
 
 $app->run();
