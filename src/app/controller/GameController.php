@@ -41,9 +41,9 @@ class GameController
 		$vue->listJeux();
 	}
 	
-	public function ratingMario(){
-		$list = Game::where('original_game_ratings',)
-	}
+//	public function ratingMario(){
+//		$list = Game::where('original_game_ratings',)
+//	}
 
     public function jeuxMarioCompIncRating3Cero(){
         foreach(Game::where('name', 'like', '%Mario%')
