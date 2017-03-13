@@ -41,6 +41,11 @@ class GameController
 		$vue -> persosjeux();
 	}
 
+	public function listMarioPersonnages(){
+		$list = Game::where('name', 'like', 'Mario%')
+	}
+
+
 	public function jeuxParSony(){
 		$list = Game::where('developers','like','%Sony%' );
 		$vue = new GameView($list);
