@@ -11,7 +11,7 @@ class Character extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 	
-	public function Company(){
+	public function Game2Character(){
 		return $this->belongsTo('\app\model\Game','id');
 	}
 }
