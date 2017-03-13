@@ -17,7 +17,7 @@ class GameView{
 	}
 	
 	public function listJeux(){	
-		foreach($list_jeux as $jeu){
+		foreach($this->list_jeux as $jeu){
 			echo $jeu->id . ' ' . $jeu->name . '<br>';
 		}
 	}

@@ -33,8 +33,41 @@ class GameController
 		$vue = new GameView($list);
 		$vue->jeuxByPage();
 	}
+
 	
 	public function listMarioPersonnages(){
 		$list = Game::where('name', 'like', 'Mario%')
 	}
+
+
+	
+	public function jeuxParSony(){
+		$list = Game::where('developers','like','%Sony%' );
+		$vue = new GameView($list);
+		$vue->listJeux();
+	}
+	
+//	public function ratingMario(){
+//		$list = Game::where('original_game_ratings',)
+//	}
+
+    public function jeuxMarioCompIncRating3Cero(){
+        foreach(Game::where('name', 'like', '%Mario%')
+                    ->whereHas('original_game_ratings', function($q){
+                        $q->where('name', 'like', '%3+%');
+                    })
+                    ->whereHas('companyAsDeveloper', function($q) {
+                        $q->where('name', 'like', '%Inc.%');
+                    })
+                    ->get() as $game){
+            echo '####' . $game->name . ' : ' . $game->id . '<br>';
+            foreach ($game->original_game_ratings as $rating) {
+                echo '--------- ' . $rating->name . '<br>';
+            }
+            foreach($game->companyAsDeveloper as $comp){
+                echo '---> publisher : ' .$comp->name . '<br>';
+            }
+        }
+    }
+
 }
