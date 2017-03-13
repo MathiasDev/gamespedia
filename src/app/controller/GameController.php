@@ -33,4 +33,14 @@ class GameController
 		$vue = new GameView($list);
 		$vue->jeuxByPage();
 	}
+	
+	public function jeuxParSony(){
+		$list = Game::where('developers','like','%Sony%' );
+		$vue = new GameView($list);
+		$vue->listJeux();
+	}
+	
+	public function ratingMario(){
+		$list = Game::where('original_game_ratings',)
+	}
 }
