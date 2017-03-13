@@ -17,7 +17,7 @@ class GameView{
 	}
 	
 	public function listJeux(){	
-		foreach($list_jeux as $jeu){
+		foreach($this->list_jeux as $jeu){
 			echo $jeu->id . ' ' . $jeu->name . '<br>';
 		}
 	}
@@ -25,6 +25,12 @@ class GameView{
 	public function jeuxByPage(){
 		foreach($this->list_jeux as $jeu){
 			echo $jeu->name . '<br>';
+		}
+	}
+	
+	public function persosjeux(){
+		foreach($this->list_jeux as $jeu){
+			echo $jeu->name . ' ' . $jeu ->deck . '<br>';
 		}
 	}
 }

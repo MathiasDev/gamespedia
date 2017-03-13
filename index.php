@@ -26,4 +26,11 @@ $app->get('/jeux/listByPage/:pages', function($pages){
 	$controleur->listJeuxByNomDeck($pages);
 });
 
+$app->get('/jeux/persosjeux', function(){
+	$controleur = new \app\controller\GameController();
+	$controleur->persojeu();
+});
+
+
+
 $app->run();
