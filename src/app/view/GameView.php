@@ -27,5 +27,11 @@ class GameView{
 			echo $jeu->name . '<br>';
 		}
 	}
+	
+	public function marioPerso(){
+		foreach($this->list_jeux as $jeu){
+			echo $jeu->name . '<br>';
+		}
+	}
 }
 	

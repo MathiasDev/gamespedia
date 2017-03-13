@@ -36,7 +36,16 @@ class GameController
 
 	
 	public function listMarioPersonnages(){
-		$list = Game::where('name', 'like', 'Mario%')
+		$list = Game::where('name', 'like', 'Mario%');
+		$res = null;
+		foreach($list as $game){
+			$tmp = $game->character();
+			if($tmp->get()->count()>3){
+				$res += $tmp;
+			}
+		}
+		$vue = new GameView($res);
+		$vue->marioPerso();
 	}
 
 
