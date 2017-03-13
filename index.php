@@ -26,4 +26,14 @@ $app->get('/jeux/listByPage/:pages', function($pages){
 	$controleur->listJeuxByNomDeck($pages);
 });
 
+$app->get('/platform/listeplat', function(){
+    $controleur = new \app\controller\PlatformController();
+    $controleur->listesupp();
+});
+
+$app->get('/jeux/mario/3pers', function(){
+    $controleur = new \app\controller\PlatformController();
+    $controleur->listesupp();
+});
+
 $app->run();

@@ -14,4 +14,8 @@ class Game extends Model
 	public function Company(){
 		return $this->belongsTo('\app\model\Company','id');
 	}
+	
+	public function Character(){
+		return $this->hasMany('\app\model\Character','id');
+	}
 }

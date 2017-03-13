@@ -33,4 +33,8 @@ class GameController
 		$vue = new GameView($list);
 		$vue->jeuxByPage();
 	}
+	
+	public function listMarioPersonnages(){
+		$list = Game::where('name', 'like', 'Mario%')
+	}
 }
