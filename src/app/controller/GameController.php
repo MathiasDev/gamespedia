@@ -12,9 +12,12 @@ class GameController
     }
 
     public function listeMario(){
+        $start = microtime(true);
 		$list = Game::where('name', 'like', '%Mario%')->get();
 		$vue = new GameView($list);
 		$vue->mario();
+        $time = microtime(true) - $start;
+        echo '<br><br><b>Request time : '. $time . '</b>';
     }
 	
 	public function listJeux(){
