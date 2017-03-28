@@ -130,7 +130,7 @@ class GameController
 		
 		$start = microtime(true);
 
-        foreach(Game::all() as $jeu) {
+        foreach(Game::get() as $jeu) {
             echo '<b>' . $jeu->name . '</b><br>';
         }
 		
