@@ -26,4 +26,10 @@ class CompanyController
             echo $company->id . ' ' . $company->name . '<br>';
         }
     }
+
+    public function listeSony() {
+        foreach (Company::where('name', 'like', '%Sony%')->get() as $company) {
+            echo $company->id . ' ' . $company->name . '<br>';
+        }
+    }
 }

@@ -34,25 +34,24 @@ class GameController
 		$vue->jeuxByPage();
 	}
 	
-	public function persojeu(){ 
-		$list = Game::where('id','like',12342)->get();
-		//$list2 = Game2Character::where('game_id','like',12342)->get();
-		$vue = new GameView($list);
-		$vue -> persosjeux();
-	}
+    public function ratingJeuxMario(){
+        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu) {
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach ($jeu->original_game_ratings()->get() as $rating) {
+                echo $rating->name . '<br>';
+                //echo $rating->ratingBoard()->get()->name;
+            }
+        }
+    }
 
-	public function listMarioPersonnages(){
-		$list = Game::where('name', 'like', 'Mario%');
-		$res = null;
-		foreach($list as $game){
-			$tmp = $game->character();
-			if($tmp->get()->count()>3){
-				$res += $tmp;
-			}
-		}
-		$vue = new GameView($res);
-		$vue->marioPerso();
-	}
+    public function persoJeuxMario(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach($jeu->characters()->get() as $perso){
+                echo $perso->name . '<br>';
+            }
+        }
+    }
 
 
 	public function jeuxParSony(){
@@ -66,7 +65,7 @@ class GameController
 //	}
 
     public function jeuxMarioCompIncRating3Cero(){
-        foreach(Game::where('name', 'like', '%Mario%')
+        foreach(Game::where('name', 'like', 'Mario%')
                     ->whereHas('original_game_ratings', function($q){
                         $q->where('name', 'like', '%3+%');
                     })
@@ -80,6 +79,38 @@ class GameController
             }
             foreach($game->companyAsDeveloper as $comp){
                 echo '---> publisher : ' .$comp->name . '<br>';
+            }
+        }
+    }
+
+    public function jeuxMarioRating3(){
+        foreach(Game::where('name', 'like', 'Mario%')->get() as $jeu){
+            foreach($jeu->original_game_ratings()->where("name", "like", "%3+%")->get() as $rating){
+                echo '<b>' . $jeu->name . '</b> : '. $rating->name .'<br>';
+            }
+        }
+    }
+
+    public function jeuxMario3Inc() {
+        foreach(Game::where('name', 'like', 'Mario%')
+                    ->whereHas('original_game_ratings', function($q){
+                        $q->where('name', 'like', '%3+%');
+                    })
+                    ->whereHas('companyAsDeveloper', function($q) {
+                        $q->where('name', 'like', '%Inc.%');
+                    })
+                    ->get() as $game){
+            echo $game->name .' <br>';
+        }
+    }
+
+    public function jeuxMario3Persos(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu) {
+            if ($jeu->characters()->count() >= 3) {
+                echo '<b>' . $jeu->name . '</b><br>';
+                foreach($jeu->characters()->get() as $perso) {
+                    echo $perso->name . '<br>';
+                }
             }
         }
     }
