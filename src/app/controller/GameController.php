@@ -127,6 +127,7 @@ class GameController
     }
 	
 	public function toutjeux(){
+		
 		$start = microtime(true);
 
         foreach(Game::all() as $jeu) {
