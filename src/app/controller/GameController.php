@@ -48,12 +48,15 @@ class GameController
     }
 
     public function persoJeuxMario(){
+		$start = microtime(true);
         foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
             echo '<b>' . $jeu->name . '</b><br>';
             foreach($jeu->characters()->get() as $perso){
                 echo $perso->name . '<br>';
             }
         }
+        $time = microtime(true) - $start;
+        echo '<br><br><b>Request time : '. $time . '</b>';
     }
 
 
@@ -87,11 +90,16 @@ class GameController
     }
 
     public function jeuxMarioRating3(){
+		 $start = microtime(true);
+		 
         foreach(Game::where('name', 'like', 'Mario%')->get() as $jeu){
             foreach($jeu->original_game_ratings()->where("name", "like", "%3+%")->get() as $rating){
                 echo '<b>' . $jeu->name . '</b> : '. $rating->name .'<br>';
             }
         }
+		
+        $time = microtime(true) - $start;
+        echo '<br><br><b>Request time : '. $time . '</b>';
     }
 
     public function jeuxMario3Inc() {
@@ -117,5 +125,15 @@ class GameController
             }
         }
     }
+	
+	public function toutjeux(){
+		$start = microtime(true);
 
+        foreach(Game::all() as $jeu) {
+            echo '<b>' . $jeu->name . '</b><br>';
+        }
+		
+        $time = microtime(true) - $start;
+        echo '<br><br><b>Request time : '. $time . '</b>';
+    }
 }
