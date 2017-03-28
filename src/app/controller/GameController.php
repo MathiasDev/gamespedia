@@ -36,7 +36,7 @@ class GameController
 	
 	public function persojeu(){ 
 		$list = Game::where('id','like',12342)->get();
-		$list2 = Game2Character::where('game_id','like',12342)->get();
+		//$list2 = Game2Character::where('game_id','like',12342)->get();
 		$vue = new GameView($list);
 		$vue -> persosjeux();
 	}

@@ -44,7 +44,13 @@ $app->get('/jeux/mario/3pers', function(){
     $controleur = new \app\controller\PlatformController();
     $controleur->listesupp();
 
-	
+});
+
+$app->get('/jeux/sony', function(){
+    $controleur = new \app\controller\GameController();
+    $controleur->jeuxParSony();
+
+});
 
 $app->get('/jeux/cero3', function () {
     $controleur = new \app\controller\GameController();
