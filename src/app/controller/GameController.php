@@ -36,23 +36,19 @@ class GameController
 	
 	public function persojeu(){ 
 		$list = Game::where('id','like',12342)->get();
-		$list2 = Game2Character::where('game_id','like',12342)->get();
+		$list2 = Game2character::where('game_id','like',12342)->get();
 		$vue = new GameView($list);
 		$vue -> persosjeux();
 	}
 
-	public function listMarioPersonnages(){
-		$list = Game::where('name', 'like', 'Mario%');
-		$res = null;
-		foreach($list as $game){
-			$tmp = $game->character();
-			if($tmp->get()->count()>3){
-				$res += $tmp;
-			}
-		}
-		$vue = new GameView($res);
-		$vue->marioPerso();
-	}
+    public function persoJeuxMario(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach($jeu->characters()->get() as $perso){
+                echo $perso->name . '<br>';
+            }
+        }
+    }
 
 
 	public function jeuxParSony(){

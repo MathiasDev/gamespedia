@@ -8,12 +8,11 @@ $db = \conf\ConnectionFactory::makeConnection();
 
 
 $app->get('/jeux/mario', function(){
-//    $controleur = new \app\controller\GameController();
-//    $controleur->listeMario();
     foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu){
         echo $jeu->id . ' ' . $jeu->name . '<br>';
     }
 });
+
 
 $app->get('/company/japon', function(){
     $controleur = new \app\controller\CompanyController();
@@ -43,8 +42,13 @@ $app->get('/platform/listeplat', function(){
 $app->get('/jeux/mario/3pers', function(){
     $controleur = new \app\controller\PlatformController();
     $controleur->listesupp();
+});
 
-	
+$app->get('/jeux/mario/personnages', function () {
+    $controleur = new \app\controller\GameController();
+    $controleur->persoJeuxMario();
+});
+
 
 $app->get('/jeux/cero3', function () {
     $controleur = new \app\controller\GameController();
