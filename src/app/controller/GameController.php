@@ -90,4 +90,15 @@ class GameController
         }
     }
 
+    public function jeuxMario3Persos(){
+        foreach(Game::where('name', 'like', '%Mario')->get() as $jeu) {
+            if ($jeu->characters()->count() >= 3) {
+                echo '<b>' . $jeu->name . '</b><br>';
+                foreach($jeu->characters()->get() as $perso) {
+                    echo $perso->name . '<br>';
+                }
+            }
+        }
+    }
+
 }

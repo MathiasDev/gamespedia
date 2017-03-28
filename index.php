@@ -59,22 +59,17 @@ $app->get('/company/sony', function(){
 });
 
 //TD2 Q4
+//TODO : Bug sur le ratinBoard
 $app->get('/jeux/ratingMario', function(){
     $controleur = new \app\controller\GameController();
     $controleur->ratingJeuxMario();
 });
 
-$app->get('/platform/listeplat', function(){
-    $controleur = new \app\controller\PlatformController();
-    $controleur->listesupp();
-});
-
+//TD2 Q5
 $app->get('/jeux/mario/3pers', function(){
-    $controleur = new \app\controller\PlatformController();
-    $controleur->listesupp();
+    $controleur = new \app\controller\GameController();
+    $controleur->jeuxMario3Persos();
 });
-
-
 
 
 $app->get('/jeux/cero3', function () {
