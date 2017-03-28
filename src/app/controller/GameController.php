@@ -41,6 +41,16 @@ class GameController
 		$vue -> persosjeux();
 	}
 
+    public function ratingJeuxMario(){
+        foreach(Game::where('name', 'like', '%Mario%')->get() as $jeu) {
+            echo '<b>' . $jeu->name . '</b><br>';
+            foreach ($jeu->original_game_ratings()->get() as $rating) {
+                echo $rating->name . '<br>';
+                //echo $rating->ratingBoard()->get()->name;
+            }
+        }
+    }
+
     public function persoJeuxMario(){
         foreach(Game::where('name', 'like', '%Mario')->get() as $jeu){
             echo '<b>' . $jeu->name . '</b><br>';
