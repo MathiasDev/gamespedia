@@ -92,12 +92,14 @@ $app->get('/jeux/cero3', function () {
 //TD2 Q9
 //TODO : Ajouter un nouveau genre de jeu et l'associer aux jeux 12 56 345
 
+
 // TD 3.1 ajout de la fonction de la liste de tout les jeux et les fonctions microtime dans les requetes demandés avec affichage en bas de page
 $app->get('/jeux/toutjeux', function () {
     $controleur = new \app\controller\GameController();
     $controleur->toutjeux();
 
 });
+
 
 $app->run();
 
