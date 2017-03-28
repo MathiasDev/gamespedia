@@ -71,11 +71,27 @@ $app->get('/jeux/mario/3pers', function(){
     $controleur->jeuxMario3Persos();
 });
 
+//TD2 Q6
+$app->get('/jeux/mario/rating3', function(){
+    $controleur = new \app\controller\GameController();
+    $controleur->jeuxMarioRating3();
+});
 
+//TD2 Q7
+$app->get('/jeux/mario/rating3Inc', function(){
+    $controleur = new \app\controller\GameController();
+    $controleur->jeuxMario3Inc();
+});
+
+//TD2 Q8
 $app->get('/jeux/cero3', function () {
     $controleur = new \app\controller\GameController();
     $controleur->jeuxMarioCompIncRating3Cero();
 
 });
+
+//TD2 Q9
+//TODO : Ajouter un nouveau genre de jeu et l'associer aux jeux 12 56 345
+
 
 $app->run();
