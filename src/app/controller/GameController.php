@@ -136,4 +136,35 @@ class GameController
         $time = microtime(true) - $start;
         echo '<br><br><b>Request time : '. $time . '</b>';
     }
+
+    public function time3valeurs() {
+        $startMario = microtime(true);
+        foreach(Game::where('name', 'like', 'Mario%')->get() as $jeuMario) {
+            echo $jeuMario->name;
+        }
+        $timeMario = microtime(true) - $startMario;
+        echo '<br><b>Request time : '. $timeMario . '<br>';
+        echo 'Sans Index : Request time : 0.045414924621582<br>';
+        echo 'Avec Index : Request time : 0.0018861293792725</b><br><br><br>';
+
+        $startWorld = microtime(true);
+        foreach(Game::where('name', 'like', 'World%')->get() as $jeuWorld) {
+            echo $jeuWorld->name;
+        }
+        $timeWorld = microtime(true) - $startWorld;
+        echo '<br><b>Request time : '. $timeWorld . '<br>';
+        echo'Sans Index : Request time : 0.045998096466064<br>';
+        echo 'Avec Index : Request time : 0.0016641616821289</b><br><br><br>';
+
+        $startSonic = microtime(true);
+        foreach(Game::where('name', 'like', 'Sonic%')->get() as $jeuSonic) {
+            echo $jeuSonic->name;
+        }
+        $timeSonic = microtime(true) - $startSonic;
+        echo '<br><b>Request time : '. $timeSonic . '<br>';
+        echo 'Sans Index : Request time : 0.045586824417114<br>';
+        echo 'Avec Index : Request time : 0.0010340213775635</b><br><br><br>';
+
+        echo '<b>Après avoir fait un <i>ALTER TABLE `game` ADD INDEX(`name`)</i> pour indéxer, on remarque un beau changement dans le temps d\'éxécution des requètes !</b>';
+    }
 }

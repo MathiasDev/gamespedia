@@ -6,6 +6,12 @@ $app = new \Slim\Slim();
 \conf\ConnectionFactory::setConfig('src/conf/db.conf.ini');
 $db = \conf\ConnectionFactory::makeConnection();
 
+//Sommaire
+$app->get('/', function() {
+    $c = new \app\controller\AppController();
+    $c->sommaire();
+});
+
 
 //TD1 Q1
 $app->get('/jeux/mario', function(){
@@ -97,30 +103,11 @@ $app->get('/jeux/cero3', function () {
 $app->get('/jeux/toutjeux', function () {
     $controleur = new \app\controller\GameController();
     $controleur->toutjeux();
-
 });
 
+$app->get('/jeux/time', function () {
+    $controleur = new \app\controller\GameController();
+    $controleur->time3valeurs();
+});
 
 $app->run();
-
-$start=microtime(true);
-$liste = \app\model\Game::all();
-$time=microtime(true)-$start;
-echo "<li>durée requête 1 : ".$time."</li>";
-$start=microtime(true);
-$liste=\app\model\Game::where('name', 'like', '%Mario%')->get();
-$time=microtime(true)-$start;
-echo "<li>durée requête 2 : ".$time."</li>";
-$start=microtime(true);
-$liste=\app\model\Character::where('name', 'like', '%Mario%')->get();
-$time=microtime(true)-$start;
-echo "<li>durée requête 3 : ".$time."</li>";
-$start=microtime(true);
-$liste=\app\model\Game::where('name', 'like', '%Mario%')
-    ->whereHas('original_game_ratings', function($q){
-        $q->where('name', 'like', '%3+%');
-    })
-    ->get();
-$time=microtime(true)-$start;
-echo "<li>durée requête 4 : ".$time."</li>";
-echo '</ul>';
