@@ -112,4 +112,9 @@ $app->get('/jeux/time', function () {
 });
 
 
+$app->get('/add/u1', function () {
+    $controleur = new \app\controller\UserController();
+    $controleur->add2usersAndComments();
+});
+
 $app->run();

@@ -13,9 +13,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $table = 'character';
+    protected $table = 'user';
 
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+    public function comments() {
+        return $this->hasMany('app\model\User');
+    }
 
 }
