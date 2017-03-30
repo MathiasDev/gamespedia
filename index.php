@@ -46,6 +46,7 @@ $app->get('/jeux/listByPage/:pages', function($pages){
 
 
 //TD2 Q1
+//TODO : Probleme avec le ctrl
 $app->get('/jeux/persosjeux', function(){
 	$controleur = new \app\controller\GameController();
 	$controleur->persojeu();

@@ -23,6 +23,16 @@ class AppView
             <li><a href='jeux/listJeux'>Q4</a></li>
             <li><a href='jeux/listByPage/1'>Q5</a></li>
         </ul>
+        <ul>
+            <li><a href='jeux/persosjeux'>Q1 A REVOIR</a></li>
+            <li><a href='jeux/mario/personnages'>Q2</a></li>
+            <li><a href='company/sony'>Q3</a></li>
+            <li><a href='jeux/ratingMario'>Q4</a></li>
+            <li><a href='jeux/mario/3pers'>Q5</a></li>
+            <li><a href='jeux/mario/rating3'>Q6</a></li>
+            <li><a href='jeux/mario/rating3Inc'>Q7</a></li>
+            <li><a href='jeux/cero3'>Q8</a></li>
+        </ul>
                
 END;
 
